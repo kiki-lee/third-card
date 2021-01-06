@@ -45,6 +45,10 @@ function swapBubbles () {
         `, SpriteKind.Enemy)
     mySprite3.setPosition(list.removeAt(0), 60)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    otherSprite.destroy()
+    info.changeLifeBy(-1)
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
     otherSprite.say("+1", 100)
     otherSprite.destroy(effects.confetti, 100)
